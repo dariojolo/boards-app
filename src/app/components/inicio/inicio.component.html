@@ -1,0 +1,9 @@
+<div class="jumbotron">
+  <div class="container">
+  Ingrese su nombre:
+  <input type="text" [(ngModel)]="usuario" />
+</div>
+<br>
+
+<button class="btn btn-primary nav-link" [routerLink]="['/boards',usuario]">Aceptar</button>
+</div>
