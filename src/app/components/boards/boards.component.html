@@ -13,19 +13,20 @@
 
   <div id="list-example" class="list-group">
     <div *ngFor="let ciudad of ciudades">
-    <a  class="list-group-item list-group-item-action" >{{ ciudad.nombre }}</a>
+    <!--<a  class="list-group-item list-group-item-action" >{{ ciudad.nombre }}</a>-->
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+      <div class="card-header">{{ciudad.nombre}}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ciudad.nombre}}</h5>
+        <p class="card-text">Temperatura {{ciudad.temperatura}} Grados</p>
+        <p class="card-text">Fecha: {{fecha}}</p>
+      </div>
+    </div>
     </div>
   </div>
 
   <br>
-  <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-    <div class="card-header">Ciudad de Buenos Aires</div>
-    <div class="card-body">
-      <h5 class="card-title">Ciudad de Buenos Aires</h5>
-      <p class="card-text">Temperatura 20 Grados</p>
-      <p class="card-text">Fecha: 21/3/2018</p>
-    </div>
-  </div>
+
 </div>
 
 </div>
