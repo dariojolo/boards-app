@@ -3,7 +3,21 @@
   <h1>
     Bienvenido: {{ usuario }}!
   </h1>
+  <div id="list-example" class="list-group">
+    <div *ngFor="let board of boards">
+    <a  *ngIf="board.usuario == usuario" class="list-group-item list-group-item-action" (click) = "mostrarCiudades(usuario)">{{ board.nombre }}</a>
+    </div>
+  </div>
 
+  <br>
+
+  <div id="list-example" class="list-group">
+    <div *ngFor="let ciudad of ciudades">
+    <a  class="list-group-item list-group-item-action" >{{ ciudad.nombre }}</a>
+    </div>
+  </div>
+
+  <br>
   <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
     <div class="card-header">Ciudad de Buenos Aires</div>
     <div class="card-body">
@@ -13,4 +27,5 @@
     </div>
   </div>
 </div>
+
 </div>
