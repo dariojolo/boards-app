@@ -21,6 +21,7 @@ ciudades:Ciudad[] = [];
 usuario:string;
 ciudad1:Ciudad[];
 boards:Board[];
+resultado:String;
 
   constructor(private activatedRoute:ActivatedRoute,
               private boardService:BoardService) {
@@ -30,10 +31,12 @@ boards:Board[];
     });
   }
   ngOnInit() {
-
-    this. boardService.getBoards().subscribe(
-      boards => this.boards = boards
-    );
+//  console.log("En ngOnInit");
+//    this.boardService.getBoards().subscribe(
+    //  boards => this.boards = boards
+    //  boards => this.resultado = boards
+//    );
+//  console.log("Resultado: " + this.resultado);
   }
   mostrarCiudades(usuario:string){
     console.log("mostrar ciudades del usuario: " + usuario);
