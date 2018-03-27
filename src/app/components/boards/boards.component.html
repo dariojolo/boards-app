@@ -4,12 +4,11 @@
     Bienvenido: {{ usuario }}!
   </h1>
   <div id="list-example" class="list-group">
-    <div *ngFor="let board of boards">
-    <a  *ngIf="board.usuario == usuario" class="list-group-item list-group-item-action" (click) = "mostrarCiudades(usuario)">{{ board.nombre }}</a>
+
+  <div *ngFor="let board of boards">
+    <a  *ngIf="board.usuario == usuario" class="list-group-item list-group-item-action" (click) = "mostrarCiudades(board.ciudades)">{{ board.nombre }}</a>
     </div>
   </div>
-
-  <br>
 
   <div id="list-example" class="list-group">
     <div *ngFor="let ciudad of ciudades">

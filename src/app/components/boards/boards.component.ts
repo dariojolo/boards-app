@@ -31,15 +31,16 @@ resultado:String;
     });
   }
   ngOnInit() {
-//  console.log("En ngOnInit");
-//    this.boardService.getBoards().subscribe(
-    //  boards => this.boards = boards
-    //  boards => this.resultado = boards
-//    );
-//  console.log("Resultado: " + this.resultado);
+  console.log("En ngOnInit");
+    this.boardService.getBoards().subscribe(
+      boards => {
+         this.boards = boards;
+       });
+    console.log("En ngOnInit 2");
   }
-  mostrarCiudades(usuario:string){
-    console.log("mostrar ciudades del usuario: " + usuario);
+  mostrarCiudades(ciudades:Ciudad[]){
+      console.log("En mostrar ciudades " + ciudades.length);
+    /*console.log("mostrar ciudades del usuario: " + usuario);
     this.boards.forEach (board =>
       {
         console.log("Dentro de board: " + board);
@@ -47,10 +48,11 @@ resultado:String;
            console.log("Dentro de usuario: " + usuario);
            console.log("Dentro de usuario - ciudades: " + board.ciudades);
            this.ciudades = board.ciudades;
-          //  return board.ciudades;
+            return board.ciudades;
          }
-        })
-        //  return null;
+       })*/
+        console.log("Antes de retornar NULL ");
+          return null;
      };
 
   }
