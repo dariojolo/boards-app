@@ -10,8 +10,8 @@ import { HttpClient } from '@angular/common/http'
 export class BoardService {
 
 nombre:string;
-private urlEndPoint:string = 'http://localhost:8080/api/boards4'
-//private urlEndPointCiudades:string = 
+private urlEndPoint:string = 'http://localhost:8080/api/boards'
+//private urlEndPointCiudades:string =
 
   constructor( private http:HttpClient) { }
 
@@ -26,7 +26,7 @@ private urlEndPoint:string = 'http://localhost:8080/api/boards4'
     console.log("Nombre recibido " + nombre);
     this.nombre = nombre;
     console.log("Nombre pasado " + this.nombre);
-    return this.http.get<Ciudad[]>('http://localhost:8080/api/boards2/ciudades/'+this.nombre);
+    return this.http.get<Ciudad[]>('http://localhost:8080/api/boards/ciudades/'+this.nombre);
 
   }
 }

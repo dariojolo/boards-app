@@ -15,7 +15,8 @@ import { BoardsComponent } from './components/boards/boards.component';
 import { BoardService} from './services/board.service';
 
 //Rutas
-import { APP_ROUTING } from './app.routes'
+import { APP_ROUTING } from './app.routes';
+import { FormComponent } from './components/boards/form.component'
 
 
 
@@ -25,7 +26,8 @@ import { APP_ROUTING } from './app.routes'
     FooterComponent,
     HeaderComponent,
     InicioComponent,
-    BoardsComponent
+    BoardsComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
