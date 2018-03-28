@@ -6,12 +6,12 @@
   <div id="list-example" class="list-group">
 
   <div *ngFor="let board of boards">
-    <a  *ngIf="board.usuario == usuario" class="list-group-item list-group-item-action" (click) = "mostrarCiudades(board.ciudades)">{{ board.nombre }}</a>
+    <a  *ngIf="board.usuario == usuario" class="list-group-item list-group-item-action" (click) = "mostrarCiudades(board.usuario)">{{ board.nombre }}</a>
     </div>
   </div>
 
   <div id="list-example" class="list-group">
-    <div *ngFor="let ciudad of ciudades">
+    <div *ngFor="let ciudad of cities">
     <!--<a  class="list-group-item list-group-item-action" >{{ ciudad.nombre }}</a>-->
     <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
       <div class="card-header">{{ciudad.nombre}}</div>

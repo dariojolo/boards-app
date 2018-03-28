@@ -17,11 +17,9 @@ import { BoardService} from 'app/services/board.service'
   styleUrls: ['./boards.component.css']
 })
 export class BoardsComponent implements OnInit{
-ciudades:Ciudad[] = [];
 usuario:string;
-ciudad1:Ciudad[];
 boards:Board[];
-resultado:String;
+cities:Ciudad[];
 
   constructor(private activatedRoute:ActivatedRoute,
               private boardService:BoardService) {
@@ -38,21 +36,21 @@ resultado:String;
        });
     console.log("En ngOnInit 2");
   }
-  mostrarCiudades(ciudades:Ciudad[]){
-      console.log("En mostrar ciudades " + ciudades.length);
-    /*console.log("mostrar ciudades del usuario: " + usuario);
+  mostrarCiudades(usuario:string){
+    console.log("mostrar ciudades del usuario: " + usuario);
     this.boards.forEach (board =>
       {
-        console.log("Dentro de board: " + board);
-         if (board.usuario == usuario){
-           console.log("Dentro de usuario: " + usuario);
-           console.log("Dentro de usuario - ciudades: " + board.ciudades);
-           this.ciudades = board.ciudades;
-            return board.ciudades;
-         }
-       })*/
-        console.log("Antes de retornar NULL ");
-          return null;
-     };
+        console.log("DENTRO DEL BOARD: " + board["nombre"]);
+        if (board.usuario == usuario){
+          console.log("DENTRO DEL BOARD: " + board["nombre"] + " Con el usuario: " + board['usuario']);
+          console.log("Ciudad?? " + board.ciudades[4].nombre);
+          this.cities= board['ciudades'];
+          //console.log("Largo: " + ciudades[3].nombre);
 
-  }
+          /*board['ciudades'].forEach(ciudad =>{
+            console.log(ciudad.nombre);
+          }); */
+          }
+        });
+     }
+}
