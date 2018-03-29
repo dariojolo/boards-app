@@ -1,10 +1,12 @@
+<div class="jumbotron">
+<div style="text-align:center" class="">
  <div class="card bg-dark text-white">
   <div class="card-header"> {{ titulo }}</div>
   <div class="card-body">
 
     <form (ngSubmit)="crear()">
       <div class="form-group row">
-        <label for="" class="col-form-label col-sm-2">Board</label>
+        <label for="" class="col-form-label col-sm-2">Nombre Board</label>
         <div class="col-sm-6">
         <input type="text" class="form-control" [(ngModel)]="board.nombre" name="board">
         </div>
@@ -16,4 +18,6 @@
       </div>
     </form>
   </div>
+</div>
+</div>
 </div>

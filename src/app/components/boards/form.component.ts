@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Board } from 'app/components/models/board'
+import { BoardService} from 'app/services/board.service'
 
 @Component({
   selector: 'app-form',
@@ -10,7 +11,9 @@ export class FormComponent implements OnInit {
  private board:Board = new Board();
  private titulo: string = "Crear board";
 
-  constructor() { }
+  constructor(private boardService:BoardService) {
+    console.log(boardService.nombre);
+      }
 
   ngOnInit() {
   }

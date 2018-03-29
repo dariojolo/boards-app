@@ -1,16 +1,22 @@
 <div class="jumbotron">
-<div style="text-align:center" class="principal">
+<div style="text-align:center" class="">
   <h5 style="text-align:right">
     Bienvenido: {{ usuario }}!
   </h5>
   <div id="list-example" class="list-group">
 
-  <div *ngFor="let board of boards">
-    <a  *ngIf="board.usuario == usuario" class="list-group-item list-group-item-action" (click) = "mostrarCiudades(board.usuario)">
-      <h2>{{ board.nombre }}</h2>
+    <a *ngIf="board.usuario != null" class="list-group-item list-group-item-action" (click) = "mostrarCiudades(board.usuario)">
+      <h2 >{{ board.nombre }}</h2>
     </a>
-    </div>
+
+    <a *ngIf="board.usuario == null" class="list-group-item list-group-item-action">
+      <h2 >El usuario no contiene boards</h2>
+    </a>
   </div>
+
+<div class="my-2 text-left">
+  <button class="btn btn-rounded btn-primary" type="button" name="button" [routerLink]="['/board/form']">Crear cliente</button>
+</div>
 
   <table *ngIf="mostrarTabla" class="table table-striped table-dark">
     <thead>

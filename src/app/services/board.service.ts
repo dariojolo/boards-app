@@ -10,17 +10,13 @@ import { HttpClient } from '@angular/common/http'
 export class BoardService {
 
 nombre:string;
-private urlEndPoint:string = 'http://localhost:8080/api/boards'
-//private urlEndPointCiudades:string =
 
   constructor( private http:HttpClient) { }
 
-  getBoards():Observable<Board[]>{
-    //return of(BOARDS);
-
-    return this.http.get<Board[]>(this.urlEndPoint);
-
+  getBoards(usuario: string): Observable<Board>{
+    return this.http.get<Board>('http://localhost:8080/api/boards/nombre/'+usuario);
   }
+
   getCiudades(nombre:string):Observable<Ciudad[]>{
     //return of(BOARDS);
     console.log("Nombre recibido " + nombre);
