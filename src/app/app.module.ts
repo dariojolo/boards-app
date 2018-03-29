@@ -16,7 +16,7 @@ import { BoardService} from './services/board.service';
 
 //Rutas
 import { APP_ROUTING } from './app.routes';
-import { FormComponent } from './components/boards/form.component'
+import { FormCiudadComponent } from './components/boards/formCiudad.component'
 
 
 
@@ -27,7 +27,7 @@ import { FormComponent } from './components/boards/form.component'
     HeaderComponent,
     InicioComponent,
     BoardsComponent,
-    FormComponent
+    FormCiudadComponent
   ],
   imports: [
     BrowserModule,
