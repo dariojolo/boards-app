@@ -29,11 +29,14 @@ export class FormBoardComponent implements OnInit {
         let id = params['id']
         console.log("Board ID: " + id);
         if (id){
-          this.boardService.getBoard(id).subscribe(
+          this.boardService.getBoards(id).subscribe(
             board => {
-              this.board = board;
-              console.log("Esta board: " + this.board.nombre);
-              this.titulo = "Editar board";
+              board.forEach(
+                b => {
+                  this.board = b;
+                  this.titulo = "Editar board";
+                }
+              )
             });
         }
       })
@@ -46,7 +49,7 @@ export class FormBoardComponent implements OnInit {
       board => {
           this.titulo = "Agregar board";
           this.router.navigate(['/boards',this.boardService.usuario])
-          swal('Board agregada', `Board ${board.nombre} agregado con exito!`,'success' )
+          swal('Board agregado', `Board ${board.nombre} agregado con exito!`,'success' )
       }
     );
   }

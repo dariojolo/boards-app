@@ -20,11 +20,6 @@ export class FormCiudadComponent implements OnInit {
       }
 
   ngOnInit() {
-    console.log("LLamar a yahoo");
-    this.boardService.llamarYahoo().subscribe(
-      resultado => {
-        console.log("Resultado yahoo: " + resultado);
-      });
     this.cargarCiudad();
     console.log("Ciudad cargada: " + this.ciudad.nombre);
   }

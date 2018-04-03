@@ -21,9 +21,9 @@ nombre:string;
 private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
   constructor( private http:HttpClient) { }
 
-  getBoard(usuario: string): Observable<Board>{
+  getBoards(usuario: string): Observable<Board[]>{
     console.log("Llamando al rest que devuelve un board del usuario: " + usuario);
-    return  this.http.get<Board>(`${this.urlBoards}/${usuario}`);
+    return  this.http.get<Board[]>(`${this.urlBoards}/${usuario}`);
   }
 
   getCiudades(nombre:string):Observable<Ciudad[]>{
@@ -60,10 +60,6 @@ private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
   }
   borrarBoard(id:number): Observable<Board>{
     console.log("ID board a eliminar: " + id);
-    return this.http.delete<Board>(`${this.urlBoards}/${id}`,{headers: this.httpHeaders});
-  }
-  llamarYahoo(): Observable<String>{
-    //console.log("ID board a eliminar: " + id);
-    return this.http.get<String>(`${this.urlBoardsS}`+'yahoo',{headers: this.httpHeaders});
+    return this.http.delete<Board>(`${this.urlBoardsS}/${id}`,{headers: this.httpHeaders});
   }
 }

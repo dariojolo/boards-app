@@ -5,7 +5,7 @@
   </h5>
 
 
-    <div *ngIf="board" >
+    <div *ngFor="let board of boards" >
        <h2 >Board: {{ board.nombre }}</h2>
        <div class="my-2 text-left">
          <button class="btn btn-rounded btn-success" type="button" name="button" [routerLink]="['/board/formCiudad']">Agregar Ciudad</button>
@@ -33,6 +33,7 @@
            </tbody>
          </table>
     </div>
+
     <div *ngIf="!board">
        <h2 >El usuario no contiene boards</h2>
        <div class="my-2 text-left">
