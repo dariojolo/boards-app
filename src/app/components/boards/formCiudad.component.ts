@@ -20,6 +20,11 @@ export class FormCiudadComponent implements OnInit {
       }
 
   ngOnInit() {
+    console.log("LLamar a yahoo");
+    this.boardService.llamarYahoo().subscribe(
+      resultado => {
+        console.log("Resultado yahoo: " + resultado);
+      });
     this.cargarCiudad();
     console.log("Ciudad cargada: " + this.ciudad.nombre);
   }
@@ -33,6 +38,7 @@ export class FormCiudadComponent implements OnInit {
             ciudad => {
               this.ciudad = ciudad;
               console.log("Esta ciudad: " + this.ciudad.nombre);
+              this.titulo = "Editar ciudad";
             });
         }
       })
@@ -43,6 +49,7 @@ export class FormCiudadComponent implements OnInit {
     this.ciudad.board = this.boardService.board;
     this.boardService.agregarCiudad(this.ciudad).subscribe(
       ciudad => {
+          this.titulo = "Agregar ciudad";
           this.router.navigate(['/boards',this.boardService.usuario])
           swal('Ciudad agregada', `Ciudad ${ciudad.nombre} agregada con exito!`,'success' )
       }

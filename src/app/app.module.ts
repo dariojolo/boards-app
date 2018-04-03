@@ -17,6 +17,7 @@ import { BoardService} from './services/board.service';
 //Rutas
 import { APP_ROUTING } from './app.routes';
 import { FormCiudadComponent } from './components/boards/formCiudad.component'
+import { FormBoardComponent } from './components/boards/formBoard.component'
 
 
 
@@ -27,7 +28,8 @@ import { FormCiudadComponent } from './components/boards/formCiudad.component'
     HeaderComponent,
     InicioComponent,
     BoardsComponent,
-    FormCiudadComponent
+    FormCiudadComponent,
+    FormBoardComponent
   ],
   imports: [
     BrowserModule,

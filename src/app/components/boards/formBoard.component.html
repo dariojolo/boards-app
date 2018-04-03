@@ -6,14 +6,14 @@
 
     <form>
       <div class="form-group row">
-        <label for="" class="col-form-label col-sm-2">Nombre ciudad</label>
+        <label for="" class="col-form-label col-sm-2">Nombre board</label>
         <div class="col-sm-6">
-        <input type="text" class="form-control" [(ngModel)]="ciudad.nombre" name="ciudad">
+        <input type="text" class="form-control" [(ngModel)]="board.nombre" name="board">
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-6">
-        <button class="btn btn-primary" role="button" (click)='crear()' *ngIf="!ciudad.id else elseBlock">Crear</button>
+        <button class="btn btn-primary" role="button" (click)='crear()' *ngIf="!board.id else elseBlock">Crear</button>
           <ng-template #elseBlock>
           <button class="btn btn-primary" role="button" (click)='actualizar()'>Editar</button>
           </ng-template>

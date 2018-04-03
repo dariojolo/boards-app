@@ -16,7 +16,7 @@ export class BoardsComponent implements OnInit {
   usuario: string;
   boards: Board[];
   board: Board;
-  cities: Ciudad[];
+  ciudades: Ciudad[];
   mostrarTabla: boolean = false;
   boardIndefinido:boolean = false;
   test:string;
@@ -28,37 +28,34 @@ export class BoardsComponent implements OnInit {
       this.usuario = params['usuario'];
       this.test = this.usuario;
       console.log("En constructor: " + this.usuario);
-      boardService.nombre = this.usuario;
-      boardService.usuario = this.usuario;
-      console.log("Board service usuario: " + boardService.usuario);
     });
+    //this.boardService.nombre = this.nombre;
+    this.boardService.usuario = this.usuario;
+    this.board = this.boardService.board;
+    console.log("Board service usuario: " + boardService.usuario);
+    console.log("Board service nombre: " + boardService.nombre);
+
+
+
   }
   ngOnInit() {
-    console.log("En ngOnInit");
-    this.boardService.getBoards(this.usuario).subscribe(
-      board => {
-        if (board !== null){
-        console.log("Suscribiendo boards: " + board.nombre);
-        this.board = board;
-        this.boardService.board = board;
-        this.boardService.getCiudades(board.nombre).subscribe(
+    console.log("En ngOnInit Board Component");
+
+    this.boardService.getBoard(this.usuario).subscribe(
+      resultado => {
+        if (resultado){
+        this.board = resultado;
+        this.boardService.board = resultado;
+        console.log("Llamando a getCiudades: " + resultado.nombre);
+        this.boardService.getCiudades(resultado.nombre).subscribe(
           ciudad => {
-            console.log("Suscribiendo ciudades: " + ciudad.length);
-            this.cities = ciudad;
-            console.log("Cant: " + this.cities.length);
+            this.ciudades = ciudad;
+             console.log("Ciudades recibidas : " + ciudad.length);
+                    }
+                );
+              }
+            });
           }
-        );
-        this.cities.forEach(ciudad => {
-          console.log(ciudad.nombre);
-        });
-      }
-      });
-      if (this.board === undefined){
-        console.log("Board undefined");
-        this.boardIndefinido = true;
-        console.log("boardIndefinido: " + this.boardIndefinido);
-      }
-  }
     borrarCiudad(ciudad: Ciudad): void{
       swal({
   title: 'Esta seguro?',
@@ -77,7 +74,7 @@ export class BoardsComponent implements OnInit {
   if (result.value) {
     this.boardService.borrarCiudad(ciudad.id).subscribe(
       respuesta => {
-        this.cities = this.cities.filter(ciu => ciu !== ciudad)
+        this.ciudades = this.ciudades.filter(c => c !== ciudad)
         swal(
           'Ciudad eliminada!',
           `Ciudad ${ciudad.nombre} eliminada con éxito`,
