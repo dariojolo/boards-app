@@ -58,6 +58,6 @@ export class FormCiudadComponent implements OnInit {
       .subscribe( ciudad => {
         this.router.navigate(['/boards',this.boardService.usuario])
         swal('Ciudad actualizada', `Ciudad ${ciudad.nombre} actualizada con exito!`,'success' )
-      })
+      });
   };
 }

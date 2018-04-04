@@ -113,7 +113,17 @@ export class BoardsComponent implements OnInit {
 agregarCiudad(board:Board){
 this.boardService.boardActual = board;
 this.router.navigate(['/board/formCiudad']);
+}
+actualizarCiudades(board:Board){
+  board.ciudades.forEach(
+    ciudad => {
+      this.boardService.actualizarCiudad(ciudad)
+        .subscribe( ciudad => {
+           console.log(`Ciudad ${ciudad.nombre} actualizada`);
+           this.router.navigate(['/boards',this.boardService.usuario]);
+        });
 
+  })
 }
 
 }
