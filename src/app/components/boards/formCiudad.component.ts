@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ciudad } from 'app/components/models/ciudad'
+import { Board } from 'app/components/models/board'
 import { BoardService} from 'app/services/board.service'
 import { Router,ActivatedRoute } from '@angular/router';
 
@@ -12,11 +13,11 @@ export class FormCiudadComponent implements OnInit {
 
  private ciudad:Ciudad = new Ciudad();
  private titulo: string = "Agregar ciudad";
+ private board:Board;
 
   constructor(private boardService: BoardService,
               private router: Router,
               private activatedRoute:ActivatedRoute) {
-    console.log("Nombre: " + boardService.nombre);
       }
 
   ngOnInit() {
@@ -26,13 +27,13 @@ export class FormCiudadComponent implements OnInit {
 
   cargarCiudad():void{
       this.activatedRoute.params.subscribe(params => {
-        let id = params['id']
-        console.log("Ciudad ID: " + id);
+        let id = params['id'];
+        let b = params['board'];
+        console.log("Ciudad ID: " + id + "Board: " + b);
         if (id){
           this.boardService.getCiudad(id).subscribe(
             ciudad => {
               this.ciudad = ciudad;
-              console.log("Esta ciudad: " + this.ciudad.nombre);
               this.titulo = "Editar ciudad";
             });
         }
@@ -41,7 +42,9 @@ export class FormCiudadComponent implements OnInit {
   public crear():void{
     console.log("clickeado");
     console.log(this.ciudad);
-    this.ciudad.board = this.boardService.board;
+    console.log("Board");
+    this.ciudad.board = this.boardService.boardActual;
+
     this.boardService.agregarCiudad(this.ciudad).subscribe(
       ciudad => {
           this.titulo = "Agregar ciudad";

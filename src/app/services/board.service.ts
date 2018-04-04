@@ -14,7 +14,9 @@ urlBoardsS:string='http://localhost:8080/api/boards/';
 urlCiudades:string='http://localhost:8080/api/boards/ciudades';
 urlECiudades:string='http://localhost:8080/api/boards/Eciudades';
 
+boardActual:Board;
 board:Board;
+boards:Board[];
 usuario:string;
 
 nombre:string;
@@ -31,11 +33,7 @@ private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
     this.nombre = nombre;
     return this.http.get<Ciudad[]>(`${this.urlCiudades}/${nombre}`);
   }
-  /*  getCiudades(nombre:string):Observable<string[]>{
-    console.log("Nombre recibido " + nombre);
-    this.nombre = nombre;
-    return this.http.get<string[]>(`${this.urlCiudades}/${nombre}`);
-  } */
+
   agregarCiudad(ciudad:Ciudad): Observable<Ciudad>{
     return this.http.post<Ciudad>(this.urlCiudades, ciudad,{headers : this.httpHeaders });
   }

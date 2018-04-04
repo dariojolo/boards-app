@@ -33,10 +33,6 @@ export class BoardsComponent implements OnInit {
     //this.boardService.nombre = this.nombre;
     this.boardService.usuario = this.usuario;
     this.board = this.boardService.board;
-    console.log("Board service usuario: " + boardService.usuario);
-    console.log("Board service nombre: " + boardService.nombre);
-
-
 
   }
   ngOnInit() {
@@ -45,18 +41,19 @@ export class BoardsComponent implements OnInit {
     this.boardService.getBoards(this.usuario).subscribe(
       resultado => {
         if (resultado){
-            this.boards = resultado
-        //this.board = board;
-        //this.boardService.board = board;
-        /*this.boardService.getCiudades(board.nombre).subscribe(
-          ciudad => {
-            this.ciudades = ciudad;
-             console.log("Ciudades recibidas : " + ciudad.length);
-                    }
-                );*/
+            this.boards = resultado;
+            this.boardService.boards = resultado;
+            resultado.forEach(
+              board => {
+                this.boardService.getCiudades(board.nombre).subscribe(
+                  ciudades => {
+                    board.ciudades = ciudades;
+                  });
+                });
               }
             });
           }
+
   borrarCiudad(ciudad: Ciudad): void{
   	swal({
   		  title: 'Esta seguro?',
@@ -112,6 +109,11 @@ export class BoardsComponent implements OnInit {
     }
     this.router.navigate(['/boards',this.boardService.usuario]);
 	})
+}
+agregarCiudad(board:Board){
+this.boardService.boardActual = board;
+this.router.navigate(['/board/formCiudad']);
+
 }
 
 }
