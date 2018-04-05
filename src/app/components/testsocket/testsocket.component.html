@@ -1,0 +1,32 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+  <div class="chat-container">
+    <div class="chat">
+      <div class="message"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer2">
+  <div class="send-button">
+
+    <div class="send" >
+    </div>
+    <input  id="input" type="text" #input><button (click)="sendMessage(input.value)" type="button" name="button">Enviar</button>
+    <div>
+      <h2>Salida</h2>
+      <h3>  {{salida}}  </h3>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+  </div>
+
+</div>

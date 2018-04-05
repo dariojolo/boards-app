@@ -4,6 +4,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { BoardsComponent } from './components/boards/boards.component';
 import { FormCiudadComponent } from './components/boards/formCiudad.component';
 import { FormBoardComponent } from './components/boards/formBoard.component';
+import { TestsocketComponent } from './components/testsocket/testsocket.component';
 
 
 const APP_ROUTES: Routes = [ /*Aca vamos agregando las rutas a los components */
@@ -13,6 +14,7 @@ const APP_ROUTES: Routes = [ /*Aca vamos agregando las rutas a los components */
   { path: 'board/formCiudad/:id', component: FormCiudadComponent},
   { path: 'board/formBoard', component: FormBoardComponent},
   { path: 'board/formBoard/:id', component: FormBoardComponent},
+  { path: 'dario/test', component: TestsocketComponent},
   { path: '**', pathMatch: 'full',redirectTo:'inicio' }
 ];
 
