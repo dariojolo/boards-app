@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable'
 
 import { HttpClient ,HttpHeaders } from '@angular/common/http'
 
+
+
 @Injectable()
 export class BoardService {
 
@@ -18,8 +20,8 @@ boardActual:Board;
 board:Board;
 boards:Board[];
 usuario:string;
-
 nombre:string;
+
 private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
   constructor( private http:HttpClient) { }
 

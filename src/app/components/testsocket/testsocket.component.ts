@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
+import { Ciudad } from 'app/components/models/ciudad'
+import { BoardService } from 'app/services/board.service'
 
 import * as $ from 'jquery';
 
@@ -15,7 +17,8 @@ export class TestsocketComponent implements OnInit{
   private stompClient;
   private salida:String = '';
 
-  constructor(){ }
+  private ciudad:Ciudad;
+  constructor(boardService: BoardService){ }
   ngOnInit() {
     this.initializeWebSocketConnection();
   }
@@ -25,11 +28,18 @@ export class TestsocketComponent implements OnInit{
     this.stompClient = Stomp.over(ws);
     let that = this;
     this.stompClient.connect({}, function(frame) {
-      that.stompClient.subscribe("/topic", (message) => {
-        if(message.body) {
-        //  $(".topic").append("<div class='message'>"+message.body+"</div>")
-        //  console.log("El cuerpo: "+ message);
-          that.salida += message.body;
+      that.stompClient.subscribe("/topic", (ciudad) => {
+        if(ciudad) {
+          that.ciudad = JSON.parse(ciudad.body);
+          console.log("Ciudad :" + that.ciudad.nombre);
+          this.that.boardService.boards.forEach(board => {
+              board.ciudades.forEach(ciudad => {
+                if (ciudad.nombre == this.this.ciudad.nombre){
+                  ciudad.temperatura = this.this.ciudad.temperatura;
+                }
+              });
+
+          });
         }
       });
     });

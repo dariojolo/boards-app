@@ -25,6 +25,7 @@ export class BoardsComponent implements OnInit {
               private router: Router,
               private boardService: BoardService) {
     //console.log(activatedRoute.params);
+    console.log("CONSTRUCTOR BOARD");
     this.activatedRoute.params.subscribe(params => {
       this.usuario = params['usuario'];
       this.test = this.usuario;
@@ -33,7 +34,6 @@ export class BoardsComponent implements OnInit {
     //this.boardService.nombre = this.nombre;
     this.boardService.usuario = this.usuario;
     this.board = this.boardService.board;
-
   }
   ngOnInit() {
     console.log("En ngOnInit Board Component");
