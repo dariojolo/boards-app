@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Ciudad } from 'app/components/models/ciudad'
@@ -9,13 +9,13 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-testsocket',
   templateUrl: './testsocket.component.html',
-  styleUrls: ['./testsocket.component.css']
+  styleUrls: []
 })
-export class TestsocketComponent implements OnInit{
+export class TestsocketComponent{
   private serverUrl = 'http://localhost:8080/clima-websocket'
-  private title = 'WebSockets chat';
+  title = 'WebSockets chat';
   private stompClient;
-  private salida:String = '';
+  salida:String = '';
 
   private ciudad:Ciudad;
   constructor(boardService: BoardService){ }
@@ -31,7 +31,6 @@ export class TestsocketComponent implements OnInit{
       that.stompClient.subscribe("/topic", (ciudad) => {
         if(ciudad) {
           that.ciudad = JSON.parse(ciudad.body);
-          console.log("Ciudad :" + that.ciudad.nombre);
           this.that.boardService.boards.forEach(board => {
               board.ciudades.forEach(ciudad => {
                 if (ciudad.nombre == this.this.ciudad.nombre){

@@ -23,21 +23,16 @@ export class BoardsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private boardService: BoardService) {
-    //console.log(activatedRoute.params);
-    console.log("CONSTRUCTOR BOARD");
+              public boardService: BoardService) {
     this.activatedRoute.params.subscribe(params => {
       this.usuario = params['usuario'];
       this.test = this.usuario;
-      console.log("En constructor: " + this.usuario);
     });
     //this.boardService.nombre = this.nombre;
     this.boardService.usuario = this.usuario;
     this.board = this.boardService.board;
   }
   ngOnInit() {
-    console.log("En ngOnInit Board Component");
-
     this.boardService.getBoards(this.usuario).subscribe(
       resultado => {
         if (resultado){
@@ -119,7 +114,6 @@ actualizarCiudades(board:Board){
     ciudad => {
       this.boardService.actualizarCiudad(ciudad)
         .subscribe( ciudad => {
-           console.log(`Ciudad ${ciudad.nombre} actualizada`);
            this.router.navigate(['/boards',this.boardService.usuario]);
         });
 

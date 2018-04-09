@@ -11,9 +11,9 @@ import swal from 'sweetalert2'
 })
 export class FormCiudadComponent implements OnInit {
 
- private ciudad:Ciudad = new Ciudad();
- private titulo: string = "Agregar ciudad";
- private board:Board;
+ ciudad:Ciudad = new Ciudad();
+ titulo: string = "Agregar ciudad";
+ board:Board;
 
   constructor(private boardService: BoardService,
               private router: Router,

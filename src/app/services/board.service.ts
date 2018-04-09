@@ -26,12 +26,10 @@ private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
   constructor( private http:HttpClient) { }
 
   getBoards(usuario: string): Observable<Board[]>{
-    console.log("Llamando al rest que devuelve un board del usuario: " + usuario);
     return  this.http.get<Board[]>(`${this.urlBoards}/${usuario}`);
   }
 
   getCiudades(nombre:string):Observable<Ciudad[]>{
-    console.log("Nombre recibido " + nombre);
     this.nombre = nombre;
     return this.http.get<Ciudad[]>(`${this.urlCiudades}/${nombre}`);
   }
@@ -40,7 +38,6 @@ private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
     return this.http.post<Ciudad>(this.urlCiudades, ciudad,{headers : this.httpHeaders });
   }
   getCiudad(id):Observable<Ciudad>{
-    console.log("BoardService getCiudad ID: " + id);
     return this.http.get<Ciudad>(`${this.urlECiudades}/${id}`)
   }
 
@@ -48,7 +45,6 @@ private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
     return this.http.put<Ciudad>(`${this.urlCiudades}/${ciudad.id}`,ciudad, {headers : this.httpHeaders });
   }
   borrarCiudad(id:number): Observable<Ciudad>{
-    console.log("ID ciudad a eliminar: " + id);
     return this.http.delete<Ciudad>(`${this.urlCiudades}/${id}`,{headers: this.httpHeaders});
   }
 
@@ -59,7 +55,6 @@ private httpHeaders = new HttpHeaders({'Content-Type' : 'application/json'});
     return this.http.put<Board>(`${this.urlBoardsS}/${board.id}`,board, {headers : this.httpHeaders });
   }
   borrarBoard(id:number): Observable<Board>{
-    console.log("ID board a eliminar: " + id);
     return this.http.delete<Board>(`${this.urlBoardsS}/${id}`,{headers: this.httpHeaders});
   }
 }
